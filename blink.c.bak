@@ -1,0 +1,25 @@
+#define F_CPU 1000000L
+#include <avr/io.h>
+#include <util/twi.h>
+#include <util/delay.h>
+#include "i2cmaster.h"
+
+#define Dev24LC246 0x50
+
+int main (void)
+{
+  // set PB3 to be output
+    DDRB = 0b00001100;
+  while (1) {
+    
+    // flash# 1:
+    // set PB3 high
+    PORTB = 0b00001100; 
+    _delay_ms(500);
+    // set PB3 low
+    PORTB = 0b00000100;
+    _delay_ms(500);
+  }
+ 
+  return 1;
+}
